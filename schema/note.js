@@ -1,13 +1,15 @@
 const { NoteTC } = require("../models/note");
 
 const NoteQuery = {
-  getNotes: NoteTC.getResolver("findMany"),
-  getNoteById: NoteTC.getResolver("findById"),
+  getNotes: NoteTC.mongooseResolvers.findMany,
+  getNoteById: NoteTC.mongooseResolvers.findById,
+  getNoteByField: NoteTC.mongooseResolvers.findOne,
 };
 
 const NoteMutation = {
-  createNoteOne: NoteTC.getResolver("createOne"),
-  deleteNoteOne: NoteTC.getResolver("removeOne"),
+  createNote: NoteTC.mongooseResolvers.createOne,
+  updateNoteById: NoteTC.mongooseResolvers.updateById,
+  deleteNoteById: NoteTC.mongooseResolvers.removeById,
 };
 
 module.exports = { NoteQuery, NoteMutation };
