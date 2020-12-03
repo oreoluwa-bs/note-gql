@@ -1,6 +1,6 @@
 const crypto = require("crypto");
-const { mongoose } = require("mongoose");
-const { composeWithMongoose } = require("graphql-compose-mongoose");
+const mongoose = require("mongoose");
+const { composeMongoose } = require("graphql-compose-mongoose");
 const { default: validator } = require("validator");
 const bcrypt = require("bcryptjs");
 
@@ -100,6 +100,6 @@ userSchema.methods.createPasswordResetToken = function () {
 };
 
 const User = mongoose.model("User", userSchema);
-const UserTC = composeWithMongoose(User);
+const UserTC = composeMongoose(User);
 
 module.exports = { User, UserTC };
