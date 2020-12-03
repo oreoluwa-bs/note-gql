@@ -1,4 +1,13 @@
 const { NoteTC } = require("../models/note");
+const { UserTC } = require("../models/user");
+
+NoteTC.addRelation("author", {
+  resolver: () => UserTC.mongooseResolvers.findOne(),
+  prepareArgs: {
+    id: (source) => source.author,
+  },
+  projection: { james: true },
+});
 
 const NoteQuery = {
   getNotes: NoteTC.mongooseResolvers.findMany,
