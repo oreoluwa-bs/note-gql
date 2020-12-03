@@ -11,6 +11,10 @@ const noteSchema = new mongoose.Schema(
     content: {
       type: String,
     },
+    authorID: {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
+    },
     slug: String,
     createdAt: {
       type: Date,
@@ -24,7 +28,6 @@ const noteSchema = new mongoose.Schema(
 );
 
 // Middlewares
-// eslint-disable-next-line func-names
 noteSchema.pre("save", function (next) {
   const id = this._id.toString();
   this.slug = slugify(`${this.title} ${id.slice(id.length - 3)}`, {

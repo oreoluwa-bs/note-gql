@@ -4,6 +4,7 @@
             "rules": {
                 "no-console":"off",
                 "no-underscore-dangle":"off",
+                "func-names":"off",
         "prettier/prettier": ["error",{
             "endOfLine":"auto"
         }]
