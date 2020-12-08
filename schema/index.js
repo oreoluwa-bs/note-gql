@@ -20,6 +20,7 @@ const schema = schemaComposer.buildSchema();
 
 const graphQLServer = new ApolloServer({
   schema,
+  cors: true,
   context: ({ req }) => {
     const token = getToken(req);
 
